@@ -20,6 +20,15 @@ export class ErrMsgDirective implements OnInit, OnChanges{
     this.setMensaje();
   }
 
+  @Input() set valido( valor: boolean ) {
+    if( valor === true ) {
+      this.htmlElement.nativeElement.classList.add('hidden');
+    }
+    else {
+      this.htmlElement.nativeElement.classList.remove('hidden');
+    }
+  }
+
   constructor( private el: ElementRef<HTMLElement>) {
 
     this.htmlElement = el;
@@ -44,7 +53,7 @@ export class ErrMsgDirective implements OnInit, OnChanges{
     this.setColor();
     this.setMensaje();
     this.setEstilo();
-    
+
   }
 
   setEstilo(): void {
